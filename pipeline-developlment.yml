@@ -56,6 +56,15 @@ jobs:
       - name: Testes Unitários
         run: mvn -B test --file pom.xml
 
+
+
+
+
+
+
+
+
+
   push-image:
     name: Enviar imagem Heroku
     needs: [code-quality, tests]
@@ -77,6 +86,12 @@ jobs:
         with:
           push: true
           tags: registry.heroku.com/lab-devops-project/web:latest
+
+
+
+
+
+
 
   deploy:
     name: Publica ambiente Desenvolvimento
