@@ -33,6 +33,14 @@
 			<artifactId>mongodb-driver-sync</artifactId>
 			<version>4.7.1</version>
 		</dependency>
+
+		
+		<dependency>
+			<sonar.organization>qwefwfasf3fgq3gf</sonar.organization>
+      <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		</dependency>
+
+		    
 	</dependencies>
 
 	<build>
