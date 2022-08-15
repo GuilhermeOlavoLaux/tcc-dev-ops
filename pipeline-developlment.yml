@@ -86,12 +86,6 @@ jobs:
           push: true
           tags: registry.heroku.com/aplicacao-heroku-deploy/web:latest
 
-
-
-
-
-
-
   deploy:
     name: Publica ambiente Desenvolvimento
     needs: push-image
