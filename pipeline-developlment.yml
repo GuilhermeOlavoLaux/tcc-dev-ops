@@ -57,11 +57,6 @@ jobs:
         run: mvn -B test --file pom.xml
 
 
-
-
-
-
-
   push-image:
     name: Enviar imagem Heroku
     needs: [code-quality, tests]
@@ -85,6 +80,9 @@ jobs:
         with:
           push: true
           tags: registry.heroku.com/aplicacao-heroku-deploy/web:latest
+
+
+
 
   deploy:
     name: Publica ambiente Desenvolvimento
