@@ -104,6 +104,8 @@ jobs:
           registry: registry.heroku.com
           username: ${{ secrets.HEROKU_EMAIL }}
           password: ${{ secrets.HEROKU_API_KEY }}
+          usedocker: true
+          dontuseforce: true
       - name: Publicação
         run: heroku container:release -a aplicacao-heroku-deploy web
         env:
