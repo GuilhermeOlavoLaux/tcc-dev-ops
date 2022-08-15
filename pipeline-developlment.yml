@@ -35,7 +35,7 @@ jobs:
       - name: Adiciona permissão para mvnw
         run: chmod +x mvnw
       - name: Análise SonarCloud
-        run: ./mvnw verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=lab-devops-project -Dsonar.host.url=https://sonarcloud.io/
+        run: ./mvnw verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=aplicacao-heroku-deploy -Dsonar.host.url=https://sonarcloud.io/
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -58,6 +58,10 @@ jobs:
 
 
 
+
+
+
+
   push-image:
     name: Enviar imagem Heroku
     needs: [code-quality, tests]
@@ -74,11 +78,17 @@ jobs:
           registry: registry.heroku.com
           username: ${{ secrets.HEROKU_EMAIL }}
           password: ${{ secrets.HEROKU_API_KEY }}
+
+
       - name: Criação e envio da imagem
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: registry.heroku.com/projeto-heroku/web:latest
+          tags: registry.heroku.com/aplicacao-heroku-deploy/web:latest
+
+
+
+
 
 
 
@@ -95,7 +105,9 @@ jobs:
           username: ${{ secrets.HEROKU_EMAIL }}
           password: ${{ secrets.HEROKU_API_KEY }}
       - name: Publicação
-        run: heroku container:release -a projeto-heroku web
+        run: heroku container:release -a aplicacao-heroku-deploy web
         env:
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+
